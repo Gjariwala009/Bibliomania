@@ -18,22 +18,16 @@
     <header class="header">
         <div class="title">
             <h1>
-                <p>Welcome to Bibliomania</p>
+                Welcome to Bibliomania
             </h1>
         </div>
         <?php include '/Applications/MAMP/htdocs/includes/navigation.php' ?>
     </header>
 
-    <section class="content">
+    <div class="content">
         <?php
         include '/Applications/MAMP/htdocs/includes/populate.php' ?>
-        <li>
-            <button class="button Buy" onclick="submit">Buy Now</button>
-            <button class="button Cart" onclick="submit"> Add To Cart</button>
-        </li>
-        </ul>
-        </div>
-    </section>
+    </div>
 
     <?php include '/Applications/MAMP/htdocs/includes/footer.php' ?>
 </body>

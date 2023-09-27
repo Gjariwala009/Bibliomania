@@ -1,6 +1,6 @@
 <div class="main-content">
-    <a target="_blank" href="images/perfect-website-for-a-book-v2.jpg" alt="House on a Book with trees around">
-        <img src="images/perfect-website-for-a-book-v2.jpg">
+    <a target="_blank" href="images/perfect-website-for-a-book-v2.jpg">
+        <img src="images/perfect-website-for-a-book-v2.jpg" alt="House on a Book with trees around" width="900" height="400">
     </a>
 
 </div>

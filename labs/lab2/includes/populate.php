@@ -135,7 +135,12 @@ if (isset($_GET['id'])) {
             </li>
             <li>
                 <p>Pulication date:- {$book_details[$num1][6][$num2]}</p>
-            </li>";
+            </li><li>
+            <button class='button Buy' onclick='submit'>Buy Now</button>
+            <button class='button Cart' onclick='submit'> Add To Cart</button>
+        </li>
+        </ul>
+    </div>";
 } else {
     echo "Image ID not provided.";
 }

@@ -8,7 +8,7 @@ body {
     background-color: #333;
 }
 
-.title>h1>p {
+.title>h1 {
     font-family: "Lucida Handwriting", "Brush Script m7", cursive;
 }
 
@@ -90,11 +90,6 @@ li.dropdown {
     padding: 10px;
     text-align: center;
     font-size: 30px;
-}
-
-.main-content img {
-    width: 100%;
-    height: auto;
 }
 
 .Book {
