@@ -21,7 +21,7 @@
                 Welcome to Bibliomania
             </h1>
         </div>
-        <?php include '/Applications/MAMP/htdocs/includes/navigation.php' ?>
+        <?php include 'includes/navigation.php' ?>
     </header>
 
     <div class="content">
@@ -31,18 +31,18 @@
             $genre = $_GET['genre'];
         }
         if ($genre == "Fiction") {
-            include '/Applications/MAMP/htdocs/includes/Book/Fiction_Book.php';
+            include 'includes/Book/Fiction_Book.php';
         } else if ($genre == "Non-Fiction") {
-            include '/Applications/MAMP/htdocs/includes/Book/Non_Fiction_Book.php';
+            include 'includes/Book/Non_Fiction_Book.php';
         } else if ($genre == "Religious") {
-            include '/Applications/MAMP/htdocs/includes/Book/Religious_Book.php';
+            include 'includes/Book/Religious_Book.php';
         } else {
-            include '/Applications/MAMP/htdocs/includes/Book/Featured_Book.php';
+            include 'includes/Book/Featured_Book.php';
         }
         ?>
     </div>
 
-    <?php include '/Applications/MAMP/htdocs/includes/footer.php' ?>
+    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

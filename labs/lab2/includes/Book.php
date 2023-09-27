@@ -21,15 +21,15 @@
                 Welcome to Bibliomania
             </h1>
         </div>
-        <?php include '/Applications/MAMP/htdocs/includes/navigation.php' ?>
+        <?php include 'navigation_Book.php' ?>
     </header>
 
     <div class="content">
         <?php
-        include '/Applications/MAMP/htdocs/includes/populate.php' ?>
+        include 'populate.php' ?>
     </div>
 
-    <?php include '/Applications/MAMP/htdocs/includes/footer.php' ?>
+    <?php include 'footer.php' ?>
 </body>
 
 </html>

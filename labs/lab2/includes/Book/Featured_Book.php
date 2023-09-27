@@ -19,7 +19,7 @@ $book_details = array(
 
 for ($i = 0; $i < 3; $i++) {
     echo "<div class='Book' id='{$book_details[0][$i]}'>
-    <a target='_blank' href='/includes/Book.php?id={$book_details[0][$i]}'>
+    <a target='_blank' href='includes/Book.php?id={$book_details[0][$i]}'>
         <img src='{$book_details[1][$i]}' alt='{$book_details[3][$i]}' onclick='getImageId('{$book_details[0][$i]}')'>
     </a>
     <div class='desc'>{$book_details[2][$i]}</div>
