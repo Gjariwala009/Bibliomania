@@ -5,10 +5,10 @@
 
 **[Optional]** If what is being submitted is an individual Lab or Assignment. Otherwise, include a brief one paragraph description about the project.
 
-* *Date Created*: 26 09 2023
-* *Last Modification Date*: 27 09 2023
-* *Lab URL*: <http://web.cs.dal.ca/~gjjariwala/csci2170/lab2>
-* *Git URL*: <https://git.cs.dal.ca/gjjariwala/csci-2170/-/tree/Labs/lab2>
+* *Date Created*: 19 10 2023
+* *Last Modification Date*: 19 10 2023
+* *Lab URL*: <http://web.cs.dal.ca/~gjjariwala/csci2170/activity/lecture13>
+* *Git URL*: <https://git.cs.dal.ca/gjjariwala/csci-2170/-/tree/main/activities/lecture13>
 
 ## Authors
 
@@ -55,23 +55,10 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-If needing to run automated tests, then explain how to run the automated tests for this system. If this section is not needed, ** you may delete **.
+Input test:-
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+1. Gavin
+2. Jariwala
 
 
 ## Deployment
@@ -82,7 +69,9 @@ Add additional notes about how to deploy this on a live system
 
 <!--- Provide a list of the frameworks used to build this application, your list should include the name of the framework used, the url where the framework is available for download and what the framework was used for, see the example below --->
 
-* [IMAGE]{https://rocketexpansion.com/website-for-a-book/} - perfect-website-for-a-book-v2.jpg
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 **
 
 ## Sources Used
