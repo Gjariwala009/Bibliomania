@@ -9,9 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
 </head>
 
 <body>
@@ -22,8 +19,9 @@
 
             </h1>
             <?php
-            if (isset($input) && !empty($input)) {
-                echo "<h2>Welcome back " . $input . "</h2>";
+            if (isset($_COOKIE["username"])) {
+                $username = $_COOKIE["username"];
+                echo "<h2>Welcome back " . $username . "</h2>";
             }
             ?>
         </div>
