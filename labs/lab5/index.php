@@ -16,16 +16,25 @@
         <div class="title">
             <h1>
                 Welcome to Bibliomania
-
             </h1>
-            <?php
-            if (isset($_COOKIE["username"])) {
-                $username = $_COOKIE["username"];
-                echo "<h2>Welcome back " . $username . "</h2>";
-            }
-            ?>
         </div>
-        <?php include 'includes/navigation.php' ?>
+
+        <?php
+        if (!isset($_COOKIE['username'])) {
+            $_COOKIE['usr'] = 0;
+        } else {
+            $username = $_COOKIE['username'];
+            $userCookieName = "visits:$username";
+            if (!isset($_COOKIE[$userCookieName])) {
+                $count = 1;
+            } else {
+                $count = $_COOKIE[$userCookieName] + 1;
+            }
+            echo "<h2 class='text'> Welcome back $username! Visit number $count. </h2>";
+            setcookie($userCookieName, $count, time() + (86400 * 365));
+        }
+        ?>
+        <?php include 'navigation.php' ?>
     </header>
 
     <div class="content">
@@ -35,18 +44,18 @@
             $genre = $_GET['genre'];
         }
         if ($genre == "Fiction") {
-            include 'includes/Book/Fiction_Book.php';
+            include 'Book/Fiction_Book.php';
         } else if ($genre == "Non-Fiction") {
-            include 'includes/Book/Non_Fiction_Book.php';
+            include 'Book/Non_Fiction_Book.php';
         } else if ($genre == "Religious") {
-            include 'includes/Book/Religious_Book.php';
+            include 'Book/Religious_Book.php';
         } else {
-            include 'includes/Book/Featured_Book.php';
+            include 'Book/Featured_Book.php';
         }
         ?>
     </div>
 
-    <?php include 'includes/footer.php' ?>
+    <?php include 'footer.php' ?>
 </body>
 
 </html>

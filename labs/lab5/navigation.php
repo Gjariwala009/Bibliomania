@@ -12,7 +12,12 @@
             </div>
         </li>
         <li><a href="#">Sell Books</a></li>
-        <li style="float:right"><a href="../includes/login.php">Login</li>
-
+        <?php
+        if (isset($_COOKIE['username'])) {
+            echo "<li style='float:right'><a href='logout.php'>Logout</li>";
+        } else {
+            echo "<li style='float:right'><a href='login.php'>Login</li>";
+        }
+        ?>
     </ul>
 </div>

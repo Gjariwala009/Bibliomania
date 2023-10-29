@@ -1,9 +1,12 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["usr"])) {
-    $username = $_POST["usr"];
-    setcookie("username", $username, time() * 3600);
-    header("Location: ../index.php");
-    exit();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["username"])) {
+        $username = $_POST["username"];
+        setcookie('username', $username, time() + (86400 * 365));
+
+        header("Location: index.php");
+        exit();
+    }
 }
 ?>
 
@@ -16,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["usr"])) {
     <meta name="description" content="Title of Site">
     <meta name="author" content="Author Name">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="login-page">
@@ -30,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["usr"])) {
     </header>
 
     <div class="container">
-        <form action="../index.php" class="login-page">
+        <form action="login.php" method="POST" class="login-page">
 
-            <label for="usr">Username: </label>
-            <input type="text" id="usr" name="usr"><br>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username"><br>
 
             <label for="psw">Password: </label>
             <input type="password" id="psw" name="psw"><br>

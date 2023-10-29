@@ -4,7 +4,7 @@ $book_details = array(
 
     array(
 
-        array("../images/Fiction/Better-than-the-movies.jpeg", "../images/Fiction/The_Fault_in_Our_Stars.jpg", "../images/Fiction/The_Great_Gatsby_Cover.jpg", "../images/Fiction/The-Love-Hypothesis.jpg", "../images/Fiction/To_Kill_a_Mockingbird.jpg"),
+        array("images/Fiction/Better-than-the-movies.jpeg", "images/Fiction/The_Fault_in_Our_Stars.jpg", "images/Fiction/The_Great_Gatsby_Cover.jpg", "images/Fiction/The-Love-Hypothesis.jpg", "images/Fiction/To_Kill_a_Mockingbird.jpg"),
         array("Better Than The Movies Cover page", "The Fault in Our Stars Cover Page", "The Great Gatsby Cover Page", "The Love Hypothesis Cover Page", "To Kill A Mocking Bird Cover Page"),
         array("Better Than the Movies", "The Fault in Our Stars", "The Great Gatsby", "The Love Hypothesis", "To Kill a Mockingbird"),
         array("$25.99", "$30.99", "$22.99", "$21.99", "$19.99"),
@@ -16,7 +16,7 @@ $book_details = array(
 
     array(
 
-        array("../images/Non-Fiction/Atomic-Habits.jpeg", "../images/Non-Fiction/Educated.jpg", "../images/Non-Fiction/Sapiens.jpg", "../images/Non-Fiction/Thinking.jpg", "../images/Non-Fiction/Wright_Brothers.jpg"),
+        array("images/Non-Fiction/Atomic-Habits.jpeg", "images/Non-Fiction/Educated.jpg", "images/Non-Fiction/Sapiens.jpg", "images/Non-Fiction/Thinking.jpg", "images/Non-Fiction/Wright_Brothers.jpg"),
         array("Atomic Habits Cover page", "Educated Cover Page", "Sapiens Cover Page", "Thinking Cover Page", "Wright Brothers Cover Page"),
         array("Atomic Habits", "Educated", "Sapiens", "Thinking, Fast and Slow", "The Wright Brothers"),
         array("$26.99", "$33.99", "$21.99", "$27.99", "$15.99"),
@@ -27,7 +27,7 @@ $book_details = array(
     ),
     array(
 
-        array("../images/Religious/Bhagavad-Gita.jpeg", "../images/Religious/Bible.jpg", "../images/Religious/The_Problem_of_Pain.jpg", "../images/Religious/Quran.jpg", "../images/Religious/Shrimad_Bhagavadam.jpg"),
+        array("images/Religious/Bhagavad-Gita.jpeg", "images/Religious/Bible.jpg", "images/Religious/The_Problem_of_Pain.jpg", "images/Religious/Quran.jpg", "images/Religious/Shrimad_Bhagavadam.jpg"),
         array("Bhagavad Gita Cover page", "Bible Cover Page", "The Problem of Pain Cover Page", "Quran Cover Page", "Shrimad Bhagavadam Cover Page"),
         array("Shrimad Bhagavad Gita", "Bible", "The Problem of Pain", "Quran", "Shrimad Bhagavadam"),
         array("$29.99", "$30.99", "$25.99", "$29.99", "$49.99"),
