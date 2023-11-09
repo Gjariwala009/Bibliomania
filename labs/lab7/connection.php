@@ -6,7 +6,7 @@ $password = "9p9HTgWS5K9HAJWn36wJpB2Ai";
 
 try {
 
-    $pdo = new PDO("mysql:host=db.cs.dal.ca;dbname=amp", $username, $password);
+    $pdo = new PDO("mysql:host=db.cs.dal.ca;dbname=gjjariwala", $username, $password);
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->exec('SET NAMES "utf8"');
