@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             if (isset($_POST["submit"])) {
-                                if (!empty($emailAddress) && !filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
+                                if (!empty($emailAddress) && !filter_var($emailAddress, FILTER_VALIDATE_EMAIL, array("options" => array("regexp" => '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/')))) {
                                     echo $errorEmail;
                                     $isValid = false;
                                 }
