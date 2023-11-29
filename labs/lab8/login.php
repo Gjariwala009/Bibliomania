@@ -1,32 +1,24 @@
 <?php
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["username"])) {
-        $username = $_POST["username"];
-        setcookie('username', $username, time() + (86400 * 365));
-
-        header("Location: index.php");
-        exit();
-    }
-}
-
 include "connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $message = "";
 
     $query = $pdo->prepare("SELECT * FROM Users WHERE username = ? AND password = ?");
     $query->execute([$username, $password]);
     $user = $query->fetch(PDO::FETCH_ASSOC);
-
     if ($user) {
+        echo "if statement executed";
         $_SESSION['userInfo'] = $user;
+        setcookie('username', $username, time() + (86400 * 365));
         header("Location: index.php");
         exit();
     } else {
-        echo '<p class="text-danger text-center">Invalid username or password.</p>';
+        $message = "<p style='color: red;' class='text-danger text-center'>Invalid username or password.</p>";
     }
 }
 ?>
@@ -55,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
     <div class="container">
         <form method="POST" class="login-page">
+
+            <?php
+            echo $message;
+            ?>
 
             <label for="username">Username: </label>
             <input type="text" id="username" name="username"><br>

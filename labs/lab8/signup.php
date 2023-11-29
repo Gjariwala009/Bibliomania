@@ -10,7 +10,7 @@ function clean($input)
 }
 $isValid = false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
     if (!empty($_POST)) {
         $isValid = true;
@@ -22,21 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = clean($_POST["psw"]);
         $confirm = clean($_POST["con-psw"]);
 
-        $regexName = "/^[a-zA-Z]+( [a-zA-Z]+)*$/";
         $errorName = "<p class=\"text-danger\">Please use letters only</p>";
 
-        $regexUserName = "/^[a-zA-z'-]+$/";
         $errorUserName = "<p class=\"text-danger\">Please use letters and apostrophes only</p>";
 
-        $regexEmail = "/^[A-Za-z0-9]+@[a-zA-Z]+\.[A-Za-z]{2,5}$/";
         $errorEmail = "<p class=\"text-danger\">Please use a valid email id</p>";
 
-        $regexPass = "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12,}$/";
         $errorPass =  "<p class=\"text-danger\">Please use the correct format for the password</p>";
 
         $errorConfirmPass = "<p class=\"text-danger\">Passwords did not match! Try again.</p>";
-
-        //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     }
 
     if ($isValid) {
@@ -46,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Database error: " . implode(" ", $queryUsers->errorInfo());
             exit();
         }
-
         header("Location: login.php");
         exit();
     }
@@ -80,19 +73,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="fname">Name: </label>
             <input type="text" id="fname" name="fname"><br>
 
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if (!filter_var($name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z]+( [a-zA-Z]+)*$/")))) {
+                        echo $errorName;
+                        $isValid = false;
+                    }
+                }
+            }
+            ?>
+
             <label for="username">Username: </label>
             <input type="text" id="username" name="username"><br>
 
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if (!filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-z'-]+$/")))) {
+                        echo $errorUserName;
+                        $isValid = false;
+                    }
+                }
+            }
+            ?>
+
             <label for="email">Email: </label>
             <input type="text" id="email" name="email"><br>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if (!empty($email) && !filter_var($email, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/')))) {
+                        echo $errorEmail;
+                        $isValid = false;
+                    }
+                }
+            }
+            ?>
 
             <label for="psw">Password: </label>
             <input type="password" id="psw" name="psw"><br>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if (!filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12,}$/")))) {
+                        echo $errorPass;
+                        $isValid = false;
+                    }
+                }
+            }
+            ?>
 
             <label for="con-psw">Confirm Password: </label>
             <input type="password" id="con-psw" name="con-psw"><br>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if ($password != $confirm) {
+                        echo $errorConfirmPass;
+                        $isValid = false;
+                    }
+                }
+            }
+            ?>
 
-            <button type="submit" class="btn-primary">Register</button>
+            <button type="submit" name="register" class="btn-primary">Register</button>
         </form>
     </div>
 
