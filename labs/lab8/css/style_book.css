@@ -8,8 +8,13 @@ body {
     background-color: #333;
 }
 
-.title>h1 {
+.title>a{
+    text-decoration: none;
+}
+
+.title>a>h1 {
     font-family: "Lucida Handwriting", "Brush Script m7", cursive;
+    color: black;
 }
 
 .topnav {
@@ -128,6 +133,9 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
     color: #ccc;
+}
+
+tbody>tr>td, tfoot>tr>td{
+    color: white;
 }

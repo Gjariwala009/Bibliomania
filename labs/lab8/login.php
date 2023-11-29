@@ -39,12 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 <body class="login-page">
     <header class="header">
         <div class="title">
-            <h1>
-                Welcome to Bibliomania
-            </h1>
+            <a href="index.php">
+                <h1>
+                    Welcome to Bibliomania
+                </h1>
+            </a>
         </div>
+        <?php include "navigation.php"; ?>
     </header>
-
     <div class="container">
         <form method="POST" class="login-page">
 
@@ -53,12 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             ?>
 
             <label for="username">Username: </label>
-            <input type="text" id="username" name="username"><br>
+            <input type="text" id="username" name="username" placeholder="Enter your Username here(case sensitive)"><br>
 
             <label for="psw">Password: </label>
-            <input type="password" id="psw" name="password"><br>
+            <input type="password" id="psw" name="password" placeholder="Enter your Password here"><br>
 
-            <input type="submit" class="btn-primary" name="login">
+            <button type="submit" class="btn-primary" name="login">Login</button>
 
             <div>
                 <p>Not have an Account? <a href="signup.php">Sign up!</a>

@@ -9,19 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style_book.css">
-    <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
 </head>
 
 <body>
     <header class="header">
         <div class="title">
-            <h1>
-                Welcome to Bibliomania
-            </h1>
+            <a href="index.php">
+                <h1>
+                    Welcome to Bibliomania
+                </h1>
+            </a>
         </div>
-        <?php include 'navigation.php' ?>
+        <?php
+        include 'navigation.php'
+        ?>
     </header>
 
     <div class="content">

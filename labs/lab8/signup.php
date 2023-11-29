@@ -15,33 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     if (!empty($_POST)) {
         $isValid = true;
 
-
         $name = clean($_POST["fname"]);
         $username = clean($_POST["username"]);
         $email = clean($_POST["email"]);
         $password = clean($_POST["psw"]);
         $confirm = clean($_POST["con-psw"]);
 
-        $errorName = "<p class=\"text-danger\">Please use letters only</p>";
-
-        $errorUserName = "<p class=\"text-danger\">Please use letters and apostrophes only</p>";
-
-        $errorEmail = "<p class=\"text-danger\">Please use a valid email id</p>";
-
-        $errorPass =  "<p class=\"text-danger\">Please use the correct format for the password</p>";
-
-        $errorConfirmPass = "<p class=\"text-danger\">Passwords did not match! Try again.</p>";
-    }
-
-    if ($isValid) {
-        $queryUsers = $pdo->prepare("INSERT INTO Users (fname, username, email, password) VALUES (?, ?, ?, ?)");
-
-        if (!$queryUsers->execute([$name, $username, $email, $password])) {
-            echo "Database error: " . implode(" ", $queryUsers->errorInfo());
-            exit();
-        }
-        header("Location: login.php");
-        exit();
+        $errorName = "<p style='color: red;' class='text-danger'>Please use letters only</p>";
+        $errorUserName = "<p style='color: red;' class='text-danger'>Please use letters and apostrophes only</p>";
+        $errorEmail = "<p style='color: red;' class='text-danger'>Please use a valid email id</p>";
+        $errorPass =  "<p style='color: red;' class='text-danger'>Please use the correct format for the password</p>";
+        $errorConfirmPass = "<p style='color: red;' class='text-danger'>Passwords did not match! Try again.</p>";
     }
 }
 ?>
@@ -61,17 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 <body class="login-page">
     <header class="header">
         <div class="title">
-            <h1>
-                Welcome to Bibliomania
-            </h1>
+            <a href="index.php">
+                <h1>
+                    Welcome to Bibliomania
+                </h1>
+            </a>
         </div>
+        <?php include "navigation.php"; ?>
     </header>
-
-    <div class="container col-md-6">
+    <div class="container">
         <form action="" method="POST" class="signup-page">
 
             <label for="fname">Name: </label>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="fname" name="fname" placeholder="Enter your Name here"><br>
 
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -85,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
             ?>
 
             <label for="username">Username: </label>
-            <input type="text" id="username" name="username"><br>
+            <input type="text" id="username" name="username" placeholder="Enter your Username here(case sensitive)"><br>
 
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -99,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
             ?>
 
             <label for="email">Email: </label>
-            <input type="text" id="email" name="email"><br>
+            <input type="text" id="email" name="email" placeholder="Enter your Email Address here"><br>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["register"])) {
@@ -112,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
             ?>
 
             <label for="psw">Password: </label>
-            <input type="password" id="psw" name="psw"><br>
+            <input type="password" id="psw" name="psw" placeholder="Enter your Password here"><br>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["register"])) {
@@ -125,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
             ?>
 
             <label for="con-psw">Confirm Password: </label>
-            <input type="password" id="con-psw" name="con-psw"><br>
+            <input type="password" id="con-psw" name="con-psw" placeholder="Re-enter your Password here"><br>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["register"])) {
@@ -138,6 +124,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
             ?>
 
             <button type="submit" name="register" class="btn-primary">Register</button>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST["register"])) {
+                    if ($isValid) {
+                        $queryUsers = $pdo->prepare("INSERT INTO Users (fname, username, email, password) VALUES (?, ?, ?, ?)");
+
+                        if (!$queryUsers->execute([$name, $username, $email, $password])) {
+                            echo "Database error: " . implode(" ", $queryUsers->errorInfo());
+                            exit();
+                        }
+                        header("Location: login.php");
+                        exit();
+                    }
+                }
+            }
+            ?>
+
+            <div>
+                <p>Already have an Account? <a href="login.php">Log in!</a>
+                </p>
+            </div>
         </form>
     </div>
 

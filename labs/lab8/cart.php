@@ -80,8 +80,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bookId = $_POST["book_id"];
 
         // Update the quantity in the $_SESSION['cart'] array
-        foreach ($_SESSION['cart'] as &$book) {
+        foreach ($_SESSION['cart'] as $key => &$book) {
             if ($book['id'] == $bookId) {
+                if ($quantity <= 0) {
+                    unset($_SESSION['cart'][$key]);
+                    $_SESSION['cart'] = array_values($_SESSION['cart']);
+                    break;
+                }
                 $book['quantity'] = $quantity;
             }
         }
@@ -113,16 +118,19 @@ if (
 <body>
     <header class="header">
         <div class="title">
-            <h1>
-                Welcome to Bibliomania
-            </h1>
+            <a href="index.php">
+                <h1>
+                    Welcome to Bibliomania
+                </h1>
+            </a>
         </div>
-        <?php include 'navigation.php' ?>
+        <?php
+        include 'navigation.php' ?>
     </header>
     <div class="content">
         <table>
             <thead>
-                <tr>
+                <tr class="first-row">
                     <th>Product</th>
                     <th>Genre</th>
                     <th>Price</th>

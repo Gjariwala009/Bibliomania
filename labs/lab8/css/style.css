@@ -12,8 +12,13 @@ body {
     background-color: white;
 }
 
-.title>h1 {
+.title>a{
+    text-decoration: none;
+}
+
+.title>a>h1 {
     font-family: "Lucida Handwriting", "Brush Script m7", cursive;
+    color: black;
 }
 
 .topnav {
@@ -138,6 +143,10 @@ input[type=text], input[type=password] {
 }
 
 .login-page {
+    margin: 25px 25px;
+}
+
+.signup-page {
     margin: 25px 25px;
 }
 

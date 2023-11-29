@@ -25,11 +25,12 @@ include 'connection.php';
 <body>
     <header class="header">
         <div class="title">
-            <h1>
-                Welcome to Bibliomania
-            </h1>
+            <a href="index.php">
+                <h1>
+                    Welcome to Bibliomania
+                </h1>
+            </a>
         </div>
-
         <?php
         if (!isset($_COOKIE['username'])) {
             $_COOKIE['usr'] = 0;
@@ -44,8 +45,8 @@ include 'connection.php';
             echo "<h2 class='text'> Welcome back $username! Visit number $count. </h2>";
             setcookie($userCookieName, $count, time() + (86400 * 365));
         }
+        include 'navigation.php'
         ?>
-        <?php include 'navigation.php' ?>
     </header>
 
     <div class="content">
