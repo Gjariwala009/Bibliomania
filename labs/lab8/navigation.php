@@ -15,11 +15,13 @@
         <?php
         if (isset($_COOKIE['username'])) {
             echo "<li style='float:right'><a href='logout.php'>Logout</a></li>";
+            echo "<li style='float:right'><a href='profile.php'>Profile</a></li>";
         } else {
             echo "<li style='float:right'><a href='login.php'>Login</a></li>";
         }
         ?>
         <li style="float:right"><a href="cart.php">Cart</a></li>
+
 
     </ul>
 </div>
