@@ -78,7 +78,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Buy') {
         }
     }
     if ($key[1] != -1) {
-        $_SESSION['cart'][] = array("title" => $book_details[$key[0]][2][$key[1]], "price" => $book_details[$key[0]][3][$key[1]], "genre" => $key[2], "quantity" => 1, "id" => $_POST['id']);
+        $_SESSION['cart'][] = array("title" => $book_details[$key[0]][2][$key[1]], "price" => $book_details[$key[0]][3][$key[1]], "genre" => $key[2], "quantity" => 1, "id" => $_POST['id'], "isbn" => $book_details[$key[0]][4][$key[1]]);
     }
 }
 

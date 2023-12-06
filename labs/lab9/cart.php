@@ -2,6 +2,8 @@
 
 session_start();
 
+include 'connection.php';
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -100,6 +102,37 @@ if (
     unset($_SESSION['cart']);
     $_SESSION['cart'] = array();
 }
+
+// Check if the "checkout" button is pressed
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["checkout"])) {
+    // Check if the cart is not empty
+    if (!empty($_SESSION['cart'])) {
+        // Insert each item in the cart into the orders table
+        foreach ($_SESSION['cart'] as $book) {
+            $bookId = $book['id'];
+            $userId = $_SESSION['userInfo']['userId'];
+            $isbn = $book['isbn'];
+            $date = date("Y-m-d");
+
+            $query = $pdo->prepare("INSERT INTO `Order` (userId, isbn, date) VALUES (?, ?, ?)");
+            $query->execute([$userId, $isbn, $date]);
+
+            // You may want to check if the insertion was successful and handle errors accordingly
+            // Optionally, you can also update the stock or perform other actions
+
+            // Clear the cart after successful checkout
+            unset($_SESSION['cart']);
+            $_SESSION['cart'] = array();
+        }
+
+        // Redirect to order history page or any other confirmation page
+        header("Location: order.php");
+        exit();
+    } else {
+        // Cart is empty, display a message or handle it accordingly
+        echo "Your cart is empty. Please add items before checkout.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -179,6 +212,12 @@ if (
                     <form method="post" action="cart.php" class="empty">
                         <input type="hidden" name="empty" value="empty">
                         <input type="submit" name="emptyCart" value="Empty Cart" class='btn btn-success'>
+                    </form>
+                </tr>
+                <tr>
+                    <form method="post" action="cart.php" class="checkout">
+                        <input type="hidden" name="checkout" value="checkout">
+                        <input type="submit" name="checkout" value="Checkout" class='btn btn-success'>
                     </form>
                 </tr>
             </tfoot>

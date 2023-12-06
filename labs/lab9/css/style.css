@@ -172,13 +172,18 @@ button {
     margin: 10px;
 }
 
+.btn-primary {
+    background-color: #007BFF;
+    color: #fff;
+}
+
 .btn-secondary {
     background-color: red;
     color: #fff;
 }
 
-.btn-primary {
-    background-color: #007BFF;
+.btn-tertiary {
+    background-color: green;
     color: #fff;
 }
 

@@ -28,6 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Handle deletion failure
             echo "Error deleting account: " . $username;
         }
+    } else if (isset($_POST['order'])) {
+        header("Location: order.php");
+        exit;
     }
 }
 ?>
@@ -66,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="row-2 justify-content-center">
             <form method="POST" class="change">
                 <input type="submit" name="change" class="btn-primary" value="Update">
+                <input type="submit" name="order" class="btn-tertiary" value="View Orders">
                 <input type="submit" name="delete" class="btn-secondary" value="Delete Account">
             </form>
         </div>
