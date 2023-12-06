@@ -5,7 +5,7 @@ function clean($input)
 {
     $input = trim($input);
     $input = stripslashes($input);
-    $input = htmlspecialchars($input);
+    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     return $input;
 }
 $isValid = false;
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
         $errorEmail = "<p style='color: red;' class='text-danger'>Please use a valid email id</p>";
         $errorPass =  "<p style='color: red;' class='text-danger'>Please use the correct format for the password</p>";
         $errorConfirmPass = "<p style='color: red;' class='text-danger'>Passwords did not match! Try again.</p>";
-        //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
     }
 }
 ?>
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
                     if ($isValid) {
                         $queryUsers = $pdo->prepare("INSERT INTO Users (fname, username, email, password) VALUES (?, ?, ?, ?)");
 
-                        if (!$queryUsers->execute([$name, $username, $email, $password])) {
+                        if (!$queryUsers->execute([$name, $username, $email, $hashedPassword])) {
                             echo "Database error: " . implode(" ", $queryUsers->errorInfo());
                             exit();
                         }

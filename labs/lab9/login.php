@@ -8,12 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $password = $_POST["password"];
     $message = "";
 
-    $query = $pdo->prepare("SELECT * FROM Users WHERE username = ? AND password = ?");
-    $query->execute([$username, $password]);
+    $query = $pdo->prepare("SELECT * FROM Users WHERE username = ?");
+    $query->execute([$username]);
     $user = $query->fetch(PDO::FETCH_ASSOC);
-    if ($user) {
+
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['userInfo'] = $user;
         setcookie('username', $username, time() + (86400 * 365));
+        session_regenerate_id(true);
         header("Location: index.php");
         exit();
     } else {
